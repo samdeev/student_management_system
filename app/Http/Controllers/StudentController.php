@@ -76,6 +76,13 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student): RedirectResponse
     {
+        $request->validate([
+            'name' => ['required', 'min:3'],
+            'address' => ['required'],
+            'date_of_birth' => ['required', 'date'],
+            'gender' => ['required']
+        ]);
+
         try {
             $student->update($request->all());
             toastr()

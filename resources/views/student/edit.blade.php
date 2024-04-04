@@ -33,7 +33,7 @@
                     <x-forms.input-text
                         name="address"
                         id="address"
-                        value="{{ old('name', $student->address) }}"
+                        value="{{ old('address', $student->address) }}"
                         placeholder="Apt. 113 68970 Chanelle Ridge, New Teresita, MN 34271"
                     />
                     <x-forms.validation-error :field="__('address')" />
@@ -43,7 +43,7 @@
                     <x-forms.input-text
                         type="date"
                         name="date_of_birth"
-                        value="{{ old('name', $student->date_of_birth) }}"
+                        value="{{ old('date_of_birth', $student->date_of_birth) }}"
                         id="date_of_birth"
                     />
                     <x-forms.validation-error :field="__('date_of_birth')" />
@@ -53,7 +53,7 @@
                     <x-forms.input-text
                         name="mobile_number"
                         id="mobile_number"
-                        value="{{ old('name', $student->mobile_number) }}"
+                        value="{{ old('mobile_number', $student->mobile_number) }}"
                         placeholder="09123456789"
                     />
                     <x-forms.validation-error :field="__('mobile_number')" />
