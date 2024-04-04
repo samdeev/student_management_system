@@ -6,7 +6,7 @@
             </svg>
         </a>
         <div>
-            <h2 class="text-2xl font-semibold">Add Student</h2>
+            <h2 class="text-2xl font-semibold">Edit Student</h2>
             <p class="mt-1 text-sb text-zinc-700">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
             </p>
@@ -15,13 +15,15 @@
 
     <div class="mt-16 border border-zinc-300 shadow rounded-lg py-5 px-8">
         <div class="max-w-xl">
-            <form action="{{ route('students.store') }}" method="POST" class="space-y-8">
+            <form action="{{ route('students.update', [$student->id]) }}" method="POST" class="space-y-8">
                 @csrf
+                @method('patch')
                 <div>
                     <x-forms.input-label for="name" :value="__('Name')" />
                     <x-forms.input-text
                         name="name"
                         id="name"
+                        value="{{ old('name', $student->name) }}"
                         placeholder="Melody Marks"
                     />
                     <x-forms.validation-error :field="__('name')" />
@@ -31,6 +33,7 @@
                     <x-forms.input-text
                         name="address"
                         id="address"
+                        value="{{ old('name', $student->address) }}"
                         placeholder="Apt. 113 68970 Chanelle Ridge, New Teresita, MN 34271"
                     />
                     <x-forms.validation-error :field="__('address')" />
@@ -40,6 +43,7 @@
                     <x-forms.input-text
                         type="date"
                         name="date_of_birth"
+                        value="{{ old('name', $student->date_of_birth) }}"
                         id="date_of_birth"
                     />
                     <x-forms.validation-error :field="__('date_of_birth')" />
@@ -49,6 +53,7 @@
                     <x-forms.input-text
                         name="mobile_number"
                         id="mobile_number"
+                        value="{{ old('name', $student->mobile_number) }}"
                         placeholder="09123456789"
                     />
                     <x-forms.validation-error :field="__('mobile_number')" />
@@ -57,14 +62,14 @@
                     <x-forms.input-label :value="__('Gender')" />
                     <x-forms.select name="gender">
                         <option value="" selected disabled>--- Specify your gender ---</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
+                        <option value="Male" {{ $student->gender == 'Male' ? 'selected' : '' }}>Male</option>
+                        <option value="Female" {{ $student->gender == 'Female' ? 'selected' : '' }}>Female</option>
                     </x-forms.select>
                     <x-forms.validation-error :field="__('gender')" />
                 </div>
                 <div>
                     <x-forms.primary-button>
-                        {{ __('Create') }}
+                        {{ __('Save Changes') }}
                     </x-forms.primary-button>
                 </div>
             </form>

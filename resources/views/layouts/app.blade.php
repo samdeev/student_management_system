@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     @vite(resource_path('/css/app.css'))
+    @vite(resource_path('/js/app.js'))
 </head>
 <body class="font-fig antialiased">
     <div class="flex min-h-screen">

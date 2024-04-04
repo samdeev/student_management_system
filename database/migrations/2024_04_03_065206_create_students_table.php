@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('gender');
             $table->string('address');
             $table->date('date_of_birth');
-            $table->string('mobile_number')->nullable();
+            $table->string('mobile_number', 13)->nullable();
             $table->timestamps();
         });
     }

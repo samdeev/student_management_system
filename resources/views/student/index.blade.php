@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="flex justify-between items-center">
         <div>
-            <h2 class="text-2xl font-semibold">Students (1)</h2>
+            <h2 class="text-2xl font-semibold">Students ({{ count($students) }})</h2>
             <p class="mt-1 text-sb text-zinc-600">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
             </p>
@@ -21,13 +21,25 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="h-14">
-                    <td>Test</td>
-                    <td>Test</td>
-                    <td>Test</td>
-                    <td>Test</td>
-                    <td>Test</td>
+            @foreach($students as $student)
+                <tr class="h-14 border-t border-zinc-300">
+                    <td class="font-medium">{{ $student->name }}</td>
+                    <td class="text-zinc-600">{{ $student->gender }}</td>
+                    <td class="text-zinc-600">{{ $student->address }}</td>
+                    <td class="text-zinc-600">
+                        {{ date_create($student->date_of_birth)->format('M d, Y') }}
+                    </td>
+                    <td class="text-zinc-600">{{ $student->mobile_number }}</td>
+                    <td>
+                        <a
+                            href="{{ route('students.edit', [$student->id]) }}"
+                            class="text-sb text-indigo-600 font-medium hover:text-indigo-500 transition"
+                        >
+                            Edit
+                        </a>
+                    </td>
                 </tr>
+            @endforeach
             </tbody>
         </table>
     </div>
