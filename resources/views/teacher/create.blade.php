@@ -6,7 +6,7 @@
             </svg>
         </a>
         <div>
-            <h2 class="text-2xl font-semibold">Add Student</h2>
+            <h2 class="text-2xl font-semibold">Add Teacher</h2>
             <p class="mt-1 text-sb text-zinc-700">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
             </p>
@@ -15,10 +15,12 @@
 
     <div class="mt-16 border border-zinc-300 shadow rounded-lg py-5 px-8">
         <div class="max-w-xl">
-            <form action="{{ route('students.store') }}" method="POST" class="space-y-8">
+            <form action="{{ route('teachers.store') }}" method="POST" class="space-y-8">
                 @csrf
                 <div>
-                    <x-forms.input-label for="name" :value="__('Name')" />
+                    <x-forms.input-label for="name">
+                        Name <span class="text-red-400">&ast;</span>
+                    </x-forms.input-label>
                     <x-forms.input-text
                         name="name"
                         id="name"
@@ -27,7 +29,9 @@
                     <x-forms.validation-error :field="__('name')" />
                 </div>
                 <div>
-                    <x-forms.input-label for="address" :value="__('Address')" />
+                    <x-forms.input-label for="address">
+                        Address <span class="text-red-400">&ast;</span>
+                    </x-forms.input-label>
                     <x-forms.input-text
                         name="address"
                         id="address"
@@ -36,7 +40,9 @@
                     <x-forms.validation-error :field="__('address')" />
                 </div>
                 <div>
-                    <x-forms.input-label for="date_of_birth" :value="__('Date of Birth')" />
+                    <x-forms.input-label for="date_of_birth">
+                        Date of Birth <span class="text-red-400">&ast;</span>
+                    </x-forms.input-label>
                     <x-forms.input-text
                         type="date"
                         name="date_of_birth"
@@ -54,7 +60,22 @@
                     <x-forms.validation-error :field="__('mobile_number')" />
                 </div>
                 <div>
-                    <x-forms.input-label :value="__('Gender')" />
+                    <x-forms.input-label for="employment_type">
+                        Type <span class="text-red-400">&ast;</span>
+                    </x-forms.input-label>
+                    <x-forms.select name="employment_type">
+                        <option value="" selected disabled>--- Select employment type ---</option>
+                        <option value="Full-Time">Full-Time</option>
+                        <option value="Part-Time">Part-Time</option>
+                        <option value="Probation">Probation</option>
+                        <option value="Contract">Contract</option>
+                    </x-forms.select>
+                    <x-forms.validation-error :field="__('employment_type')" />
+                </div>
+                <div>
+                    <x-forms.input-label for="gender">
+                        Gender <span class="text-red-400">&ast;</span>
+                    </x-forms.input-label>
                     <x-forms.select name="gender">
                         <option value="" selected disabled>--- Select gender ---</option>
                         <option value="Male">Male</option>
