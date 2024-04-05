@@ -15,8 +15,9 @@
 
     <div class="mt-16 border border-zinc-300 shadow rounded-lg py-5 px-8">
         <div class="max-w-xl">
-            <form action="{{ route('courses.update') }}" method="POST" class="space-y-8">
+            <form action="{{ route('courses.update', [$course]) }}" method="POST" class="space-y-8">
                 @csrf
+                @method('patch')
                 <div>
                     <x-forms.input-label for="name">
                         Name <span class="text-red-400">&ast;</span>
